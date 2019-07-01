@@ -16,7 +16,7 @@ How to execute:
 2.  Start the container
 
 
-    docker run -tid -p 5900:5900 --name drac -v /Users/jmp/Downloads:/downloads drac-java-console x11vnc -forever -create
+    docker run -tid -p 5900:5900 --dns=10.95.48.36  --dns-search=hi.inet --name drac -v /Users/jmp/Downloads:/downloads drac-java-console x11vnc -forever -create
 
 
 3.  Connect to Firefox using your VNC client of choice on port 5900 

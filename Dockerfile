@@ -21,10 +21,6 @@ run     dpkg -i tzdata_2019a-0ubuntu0.16.04_all.deb
 run     apt-get install -y firefox icedtea-8-plugin icedtea-netx openjdk-8-jre openjdk-8-jre-headless 
 run	mkdir ~/.vnc
 
-run     echo "nameserver 10.95.48.36" > /etc/resolv.conf
-run     echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-run     echo "domain hi.inet" >> /etc/resolv.conf
-
 # Autostart firefox (might not be the best way to do it, but it does the trick)
 run     bash -c 'echo "exec openbox-session &" >> ~/.xinitrc'
 run	bash -c 'echo "firefox" >> ~/.xinitrc'
