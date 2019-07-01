@@ -3,10 +3,10 @@
 # VERSION               0.1
 # DOCKER-VERSION        0.2
 
-from	f69m/ubuntu32:14.04
+from	f69m/ubuntu32:16.04
 
 # make sure the package repository is up to date
-run	echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+run	echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" > /etc/apt/sources.list
 run	apt-get update
 
 # Install vnc, xvfb in order to create a 'fake' display and firefox
@@ -14,13 +14,16 @@ run	apt-get install -y x11vnc xvfb openbox
 
 # Install the specific tzdata-java we need
 run     apt-get -y install wget
-run     wget --no-check-certificate https://launchpad.net/ubuntu/+archive/primary/+files/tzdata-java_2016d-0ubuntu0.14.04_all.deb
-run     dpkg -i tzdata-java_2016d-0ubuntu0.14.04_all.deb
-run     apt-get install -y tzdata
+run     wget --no-check-certificate http://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2019a-0ubuntu0.16.04_all.deb
+run     dpkg -i tzdata_2019a-0ubuntu0.16.04_all.deb
 
 # Install Firefox and Java Plugins
-run     apt-get install -y firefox icedtea-6-plugin icedtea-netx openjdk-6-jre openjdk-6-jre-headless tzdata-java 
+run     apt-get install -y firefox icedtea-8-plugin icedtea-netx openjdk-8-jre openjdk-8-jre-headless 
 run	mkdir ~/.vnc
+
+run     echo "nameserver 10.95.48.36" > /etc/resolv.conf
+run     echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+run     echo "domain hi.inet" >> /etc/resolv.conf
 
 # Autostart firefox (might not be the best way to do it, but it does the trick)
 run     bash -c 'echo "exec openbox-session &" >> ~/.xinitrc'
