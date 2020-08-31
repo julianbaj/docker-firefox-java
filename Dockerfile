@@ -14,8 +14,8 @@ run	apt-get install -y x11vnc xvfb openbox
 
 # Install the specific tzdata-java we need
 run     apt-get -y install wget
-run     wget --no-check-certificate http://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2019a-0ubuntu0.16.04_all.deb
-run     dpkg -i tzdata_2019a-0ubuntu0.16.04_all.deb
+run     wget --no-check-certificate http://archive.ubuntu.com/ubuntu/pool/main/t/tzdata/tzdata_2020a-0ubuntu0.16.04_all.deb
+run     dpkg -i tzdata_2020a-0ubuntu0.16.04_all.deb
 
 # Install Firefox and Java Plugins
 run     apt-get install -y firefox icedtea-8-plugin icedtea-netx openjdk-8-jre openjdk-8-jre-headless 
